@@ -1,6 +1,6 @@
 [submodule "lerobot"]
 	path = lerobot
-	url = git@github.com:holmsslk/lerobot.git
+	url = git@github.com:holmsslk/lerobot_TG620-train.git
 [submodule "TG_Robot/src/ros2_socketcan"]
 	path = TG_Robot/src/ros2_socketcan
-	url = git@github.com:holmsslk/ros2_socketcan.git
+	url = git@github.com:holmsslk/lerobot_TG620-train.git

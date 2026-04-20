@@ -5,6 +5,12 @@ Workspace aggregator for TG arm620 integration:
 - `lerobot` (as submodule): LeRobot fork with `tg_arm620_follower` and `tg_arm620_keyboard`.
 - `TG_Robot/src/ros2_socketcan` (as submodule): forked `ros2_socketcan` with TG-specific fixes.
 
+Current publishing layout:
+
+- `submodules/lerobot-feat` branch stores the `lerobot` submodule commit.
+- `submodules/ros2-socketcan-feat` branch stores the `ros2_socketcan` submodule commit.
+- `.gitmodules` points both submodules to this same repository URL so commits can be resolved without extra forks.
+
 ## Clone
 
 ```bash
