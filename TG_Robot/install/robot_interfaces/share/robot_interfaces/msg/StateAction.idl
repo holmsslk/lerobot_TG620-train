@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from robot_interfaces/msg/StateAction.msg
+// generated code does not contain a copyright notice
+
+
+module robot_interfaces {
+  module msg {
+    module StateAction_Constants {
+      @verbatim (language="comment", text=
+        "Constants")
+      const uint8 SAVE = 0;
+      const uint8 DELETE = 1;
+    };
+    struct StateAction {
+      string state_name;
+
+      @verbatim (language="comment", text=
+        "0: save, 1: delete")
+      uint8 operation_mode;
+    };
+  };
+};

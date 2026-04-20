@@ -1,0 +1,19 @@
+{
+  "package_name": "robot_interfaces",
+  "non_idl_tuples": [
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/QtRecv.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/LineMsg.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/ArmState.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/QtPub.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/MotorFdb.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/RobotControlMsg.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/MoveCAction.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/StateAction.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/KeyPressedAction.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/GenericMotorParameter.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/GenericMotorOperation.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:msg/GripperControl.msg",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:srv/SdkRecv.srv",
+    "/home/holms/Projects/lerobot/TG_Robot/src/robot_interfaces:srv/ComputeGravity.srv"
+  ]
+}

@@ -1,0 +1,39 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from robot_interfaces/msg/RobotControlMsg.msg
+// generated code does not contain a copyright notice
+
+
+module robot_interfaces {
+  module msg {
+    module RobotControlMsg_Constants {
+      @verbatim (language="comment", text=
+        "Constants")
+      const uint8 MOTOR_DISABLE = 0;
+      const uint8 MOTOR_ENABLE = 1;
+      const uint8 CURRENT_MODE = 2;
+      const uint8 EFFORT_POSITION_MODE = 3;
+      const uint8 SPEED_MODE = 4;
+      const uint8 POSITION_ABS_MODE = 5;
+      const uint8 POSITION_INC_MODE = 6;
+    };
+    struct RobotControlMsg {
+      @verbatim (language="comment", text=
+        "0-disable  1-enable")
+      sequence<uint8> motor_enable_flag;
+
+      @verbatim (language="comment", text=
+        "04-velocity   05-position   02-effort")
+      sequence<uint8> motor_mode;
+
+      sequence<double> position;
+
+      sequence<double> velocity;
+
+      sequence<double> effort;
+
+      sequence<uint8> kp;
+
+      sequence<uint8> kd;
+    };
+  };
+};

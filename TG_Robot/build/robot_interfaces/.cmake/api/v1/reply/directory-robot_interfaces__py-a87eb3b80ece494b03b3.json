@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "robot_interfaces__py",
+		"source" : "/home/holms/Projects/lerobot/TG_Robot/build/robot_interfaces/robot_interfaces__py"
+	}
+}

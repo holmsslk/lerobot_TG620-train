@@ -1,0 +1,19 @@
+[35m[1mConsolidate compiler generated dependencies of target data_logger_node[0m
+[100%] Built target data_logger_node
+-- Install configuration: ""
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/lib/motor_control_logger/data_logger_node
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/ament_index/resource_index/package_run_dependencies/motor_control_logger
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/ament_index/resource_index/parent_prefix_path/motor_control_logger
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/environment/ament_prefix_path.sh
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/environment/path.sh
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/environment/path.dsv
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/local_setup.bash
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/local_setup.sh
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/local_setup.zsh
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/local_setup.dsv
+-- Installing: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/package.dsv
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/ament_index/resource_index/packages/motor_control_logger
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/cmake/motor_control_loggerConfig.cmake
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/cmake/motor_control_loggerConfig-version.cmake
+-- Up-to-date: /home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/package.xml

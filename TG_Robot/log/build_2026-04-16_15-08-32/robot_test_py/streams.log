@@ -1,0 +1,44 @@
+[1.086s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/src/robot_test_py': AMENT_PREFIX_PATH=/home/holms/Projects/lerobot/TG_Robot/install/robot_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/holms/Projects/lerobot/TG_Robot/install/robot_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/holms/Projects/lerobot/TG_Robot/install/robot_interfaces/lib:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_driver/lib:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/home/holms/Projects/mujoco/mujoco-3.3.0/bin PYTHONPATH=/home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages:/home/holms/Projects/lerobot/TG_Robot/install/robot_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_test_py build --build-base /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build install --record /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/install.log --single-version-externally-managed install_data
+[1.290s] running egg_info
+[1.292s] creating ../../build/robot_test_py/robot_test_py.egg-info
+[1.292s] writing ../../build/robot_test_py/robot_test_py.egg-info/PKG-INFO
+[1.292s] writing dependency_links to ../../build/robot_test_py/robot_test_py.egg-info/dependency_links.txt
+[1.293s] writing entry points to ../../build/robot_test_py/robot_test_py.egg-info/entry_points.txt
+[1.293s] writing requirements to ../../build/robot_test_py/robot_test_py.egg-info/requires.txt
+[1.293s] writing top-level names to ../../build/robot_test_py/robot_test_py.egg-info/top_level.txt
+[1.293s] writing manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+[1.295s] reading manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+[1.295s] writing manifest file '../../build/robot_test_py/robot_test_py.egg-info/SOURCES.txt'
+[1.296s] running build
+[1.296s] running build_py
+[1.296s] creating /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build
+[1.296s] creating /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib
+[1.296s] creating /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py
+[1.296s] copying robot_test_py/robot_test_py2.py -> /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py
+[1.297s] copying robot_test_py/robot_test_py.py -> /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py
+[1.297s] copying robot_test_py/__init__.py -> /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py
+[1.297s] copying robot_test_py/robot_test_py3.py -> /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py
+[1.298s] running install
+[1.302s] running install_lib
+[1.302s] creating /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[1.302s] copying /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py2.py -> /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[1.302s] copying /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py.py -> /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[1.302s] copying /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py/__init__.py -> /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[1.302s] copying /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build/lib/robot_test_py/robot_test_py3.py -> /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py
+[1.302s] byte-compiling /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py2.py to robot_test_py2.cpython-310.pyc
+[1.302s] byte-compiling /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py.py to robot_test_py.cpython-310.pyc
+[1.302s] byte-compiling /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/__init__.py to __init__.cpython-310.pyc
+[1.302s] byte-compiling /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py/robot_test_py3.py to robot_test_py3.cpython-310.pyc
+[1.302s] running install_data
+[1.302s] creating /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/share/ament_index
+[1.302s] creating /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/share/ament_index/resource_index
+[1.302s] creating /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/share/ament_index/resource_index/packages
+[1.303s] copying resource/robot_test_py -> /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/share/ament_index/resource_index/packages
+[1.303s] copying package.xml -> /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/share/robot_test_py
+[1.304s] running install_egg_info
+[1.305s] Copying ../../build/robot_test_py/robot_test_py.egg-info to /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages/robot_test_py-0.0.0-py3.10.egg-info
+[1.307s] running install_scripts
+[1.339s] Installing robot_test_py script to /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/robot_test_py
+[1.339s] Installing robot_test_py2 script to /home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/robot_test_py
+[1.339s] writing list of installed files to '/home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/install.log'
+[1.356s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/src/robot_test_py' returned '0': AMENT_PREFIX_PATH=/home/holms/Projects/lerobot/TG_Robot/install/robot_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/holms/Projects/lerobot/TG_Robot/install/robot_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/home/holms/Projects/lerobot/TG_Robot/install/robot_interfaces/lib:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_driver/lib:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/home/holms/Projects/mujoco/mujoco-3.3.0/bin PYTHONPATH=/home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/holms/Projects/lerobot/TG_Robot/install/robot_test_py/lib/python3.10/site-packages:/home/holms/Projects/lerobot/TG_Robot/install/robot_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_test_py build --build-base /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/build install --record /home/holms/Projects/lerobot/TG_Robot/build/robot_test_py/install.log --single-version-externally-managed install_data

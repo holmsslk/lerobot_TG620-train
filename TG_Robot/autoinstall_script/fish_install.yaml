@@ -1,0 +1,10 @@
+chooses:
+- choose: 1
+  desc: '一键安装:ROS'
+- choose: 2
+  desc: 换源后继续安装
+- choose: 1
+  desc: humble(ROS2)桌面版
+- choose: 1
+  desc: humble(ROS2)
+time: '1743043093.6535664'

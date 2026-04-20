@@ -1,0 +1,20 @@
+running develop
+running egg_info
+writing tg_lerobot_bridge.egg-info/PKG-INFO
+writing dependency_links to tg_lerobot_bridge.egg-info/dependency_links.txt
+writing entry points to tg_lerobot_bridge.egg-info/entry_points.txt
+writing requirements to tg_lerobot_bridge.egg-info/requires.txt
+writing top-level names to tg_lerobot_bridge.egg-info/top_level.txt
+reading manifest file 'tg_lerobot_bridge.egg-info/SOURCES.txt'
+writing manifest file 'tg_lerobot_bridge.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg-lerobot-bridge.egg-link (link to .)
+Installing tg_arm620_control_bridge script to /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/tg_lerobot_bridge
+Installing tg_arm620_sim_control_bridge script to /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/tg_lerobot_bridge
+Installing tg_camera_zmq_bridge script to /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/tg_lerobot_bridge
+
+Installed /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge
+running symlink_data
+symbolically linking /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/resource/tg_lerobot_bridge -> /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/ament_index/resource_index/packages
+symbolically linking /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/package.xml -> /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/tg_lerobot_bridge
+symbolically linking /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/launch/sim_bridges.launch.py -> /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/tg_lerobot_bridge/launch

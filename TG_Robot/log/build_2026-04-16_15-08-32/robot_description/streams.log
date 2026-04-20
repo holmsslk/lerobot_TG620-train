@@ -1,0 +1,72 @@
+[0.040s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake /home/holms/Projects/lerobot/TG_Robot/src/robot_description -DCMAKE_INSTALL_PREFIX=/home/holms/Projects/lerobot/TG_Robot/install/robot_description
+[0.365s] -- The C compiler identification is GNU 11.4.0
+[0.743s] -- The CXX compiler identification is GNU 11.4.0
+[0.768s] -- Detecting C compiler ABI info
+[1.063s] -- Detecting C compiler ABI info - done
+[1.067s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.067s] -- Detecting C compile features
+[1.067s] -- Detecting C compile features - done
+[1.072s] -- Detecting CXX compiler ABI info
+[1.145s] -- Detecting CXX compiler ABI info - done
+[1.149s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.149s] -- Detecting CXX compile features
+[1.150s] -- Detecting CXX compile features - done
+[1.161s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.291s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.411s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.493s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.498s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.498s] -- Added test 'lint_cmake' to check CMake code style
+[1.499s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.500s] -- Added test 'xmllint' to check XML markup files
+[1.502s] -- Configuring done
+[1.509s] -- Generating done
+[1.514s] -- Build files have been written to: /home/holms/Projects/lerobot/TG_Robot/build/robot_description
+[1.521s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake /home/holms/Projects/lerobot/TG_Robot/src/robot_description -DCMAKE_INSTALL_PREFIX=/home/holms/Projects/lerobot/TG_Robot/install/robot_description
+[1.523s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --build /home/holms/Projects/lerobot/TG_Robot/build/robot_description -- -j8 -l8
+[1.554s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --build /home/holms/Projects/lerobot/TG_Robot/build/robot_description -- -j8 -l8
+[1.564s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --install /home/holms/Projects/lerobot/TG_Robot/build/robot_description
+[1.571s] -- Install configuration: ""
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/launch
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/launch/arm380_display.launch.py
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/launch/robot_description.launch.py
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/launch/arm620_display.launch.py
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/urdf
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/urdf/arm380_gazebo.urdf
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/urdf/arm6202.urdf
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/urdf/arm620_gazebo.urdf
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/urdf/arm620.urdf
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/urdf/arm380.urdf
+[1.573s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes
+[1.574s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm380
+[1.574s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm380/Link4.STL
+[1.576s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm380/Link3.STL
+[1.578s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm380/Link1.STL
+[1.582s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm380/Link6.STL
+[1.582s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm380/base_link.STL
+[1.583s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm380/Link5.STL
+[1.583s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm380/Link2.STL
+[1.585s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm620
+[1.585s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm620/Link4.STL
+[1.586s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm620/Link3.STL
+[1.588s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm620/Link1.STL
+[1.588s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm620/Link6.STL
+[1.589s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm620/base_link.STL
+[1.590s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm620/Link5.STL
+[1.591s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/meshes/arm620/Link2.STL
+[1.593s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/ament_index/resource_index/package_run_dependencies/robot_description
+[1.593s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/ament_index/resource_index/parent_prefix_path/robot_description
+[1.593s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/environment/ament_prefix_path.sh
+[1.593s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/environment/ament_prefix_path.dsv
+[1.593s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/environment/path.sh
+[1.594s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/environment/path.dsv
+[1.594s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/local_setup.bash
+[1.594s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/local_setup.sh
+[1.594s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/local_setup.zsh
+[1.594s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/local_setup.dsv
+[1.594s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/package.dsv
+[1.594s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/ament_index/resource_index/packages/robot_description
+[1.594s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/cmake/robot_descriptionConfig.cmake
+[1.595s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/cmake/robot_descriptionConfig-version.cmake
+[1.595s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_description/share/robot_description/package.xml
+[1.605s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --install /home/holms/Projects/lerobot/TG_Robot/build/robot_description

@@ -1,0 +1,3 @@
+[console_scripts]
+traj_smoother = traj_smoother_py.smoother_node:main
+

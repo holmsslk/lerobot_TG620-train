@@ -1,0 +1,67 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from robot_interfaces/srv/SdkRecv.srv
+// generated code does not contain a copyright notice
+
+#include "robot_interfaces/msg/GenericMotorParameter.idl"
+#include "std_msgs/msg/Float64MultiArray.idl"
+
+module robot_interfaces {
+  module srv {
+    @verbatim (language="comment", text=
+      "请求部分")
+    struct SdkRecv_Request {
+      @verbatim (language="comment", text=
+        "机械臂工作模式")
+      uint8 working_mode;
+
+      @verbatim (language="comment", text=
+        "夹爪目标状态")
+      std_msgs::msg::Float64MultiArray gripper_goal;
+
+      @verbatim (language="comment", text=
+        "关节目标位置")
+      std_msgs::msg::Float64MultiArray joint_angles_goal;
+
+      @verbatim (language="comment", text=
+        "机械臂目标姿态")
+      std_msgs::msg::Float64MultiArray arm_pose_goal;
+
+      @verbatim (language="comment", text=
+        "夹爪原生数据")
+      sequence<uint8> gripper_data;
+
+      @verbatim (language="comment", text=
+        "夹爪类型")
+      uint8 gripper_type;
+
+      @verbatim (language="comment", text=
+        "关节序号")
+      uint8 joint_idx;
+
+      @verbatim (language="comment", text=
+        "转动方向")
+      uint8 vel_dir;
+
+      @verbatim (language="comment", text=
+        "用户配置参数")
+      robot_interfaces::msg::GenericMotorParameter usr_param;
+
+      @verbatim (language="comment", text=
+        "速度配置")
+      std_msgs::msg::Float64MultiArray motion_config;
+    };
+    @verbatim (language="comment", text=
+      "响应部分")
+    struct SdkRecv_Response {
+      boolean success;
+
+      @verbatim (language="comment", text=
+        "关节目标位置")
+      std_msgs::msg::Float64MultiArray cur_joint_angles;
+
+      @verbatim (language="comment", text=
+        "当前位姿")
+      std_msgs::msg::Float64MultiArray cur_pos;
+    };
+  };
+};

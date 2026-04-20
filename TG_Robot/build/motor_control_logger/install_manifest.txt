@@ -1,0 +1,16 @@
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/lib/motor_control_logger/data_logger_node
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/ament_index/resource_index/package_run_dependencies/motor_control_logger
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/ament_index/resource_index/parent_prefix_path/motor_control_logger
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/environment/ament_prefix_path.sh
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/environment/ament_prefix_path.dsv
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/environment/path.sh
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/environment/path.dsv
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/local_setup.bash
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/local_setup.sh
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/local_setup.zsh
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/local_setup.dsv
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/package.dsv
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/ament_index/resource_index/packages/motor_control_logger
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/cmake/motor_control_loggerConfig.cmake
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/cmake/motor_control_loggerConfig-version.cmake
+/home/holms/Projects/lerobot/TG_Robot/install/motor_control_logger/share/motor_control_logger/package.xml

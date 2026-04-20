@@ -1,0 +1,50 @@
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import Int32
+from std_msgs.msg import Bool
+from rclpy.qos import QoSProfile, qos_profile_system_default
+import sys
+
+class RobotArmCmd(Node):
+    def __init__(self):
+        super().__init__('robot_arm_cmd')
+        # 声明参数
+        self.declare_parameter('answer_value', 1)
+        # 获取参数值
+        self.answer_value = self.get_parameter('answer_value').get_parameter_value().integer_value
+        # 创建发布者
+        self.publisher_ = self.create_publisher(Int32, 'answer_reply', 10)
+        self.timer_ = self.create_timer(1.0, self.timer_callback)
+        self.subscription_ = self.create_subscription(Int32, 'nod_begin_flag', self.listener_callback, 10)
+        self.subscription_plan_result_ = self.create_subscription(Bool, "plan_state", self.listener_plan_state_callback, 10)
+        self.subscription_
+
+
+
+    def timer_callback(self):
+        msg = Int32()
+        msg.data = self.answer_value
+        self.publisher_.publish(msg)
+        self.get_logger().info('Published answer: %d' % msg.data)
+
+    def listener_callback(self, msg):
+        if msg.data == 1:
+            self.timer_.cancel()
+            assert 0
+            self.destroy_node()
+            rclpy.shutdown()
+
+    def listener_plan_state_callback(self, msg):
+        if msg.data == True:
+            assert 0
+            
+def main(args=None):
+    if args is None:
+        args = sys.argv
+    rclpy.init(args=args)
+    node = RobotArmCmd()
+    rclpy.spin(node)
+    
+
+if __name__ == '__main__':
+    main()

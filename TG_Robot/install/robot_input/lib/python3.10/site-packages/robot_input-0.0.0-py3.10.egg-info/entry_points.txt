@@ -1,0 +1,4 @@
+[console_scripts]
+robot_input_keyboard = keyboard.keyboard_controller:main
+robot_input_tcp = tcp.tcp_controller:main
+

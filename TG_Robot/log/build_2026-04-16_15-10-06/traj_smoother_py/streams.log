@@ -1,0 +1,21 @@
+[0.832s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/src/traj_smoother_py': PYTHONPATH=/home/holms/Projects/lerobot/TG_Robot/build/traj_smoother_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/holms/Projects/lerobot/TG_Robot/install/traj_smoother_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/traj_smoother_py build --build-base /home/holms/Projects/lerobot/TG_Robot/build/traj_smoother_py/build install --record /home/holms/Projects/lerobot/TG_Robot/build/traj_smoother_py/install.log --single-version-externally-managed install_data
+[1.016s] running egg_info
+[1.016s] writing ../../build/traj_smoother_py/traj_smoother_py.egg-info/PKG-INFO
+[1.019s] writing dependency_links to ../../build/traj_smoother_py/traj_smoother_py.egg-info/dependency_links.txt
+[1.019s] writing entry points to ../../build/traj_smoother_py/traj_smoother_py.egg-info/entry_points.txt
+[1.019s] writing requirements to ../../build/traj_smoother_py/traj_smoother_py.egg-info/requires.txt
+[1.019s] writing top-level names to ../../build/traj_smoother_py/traj_smoother_py.egg-info/top_level.txt
+[1.019s] reading manifest file '../../build/traj_smoother_py/traj_smoother_py.egg-info/SOURCES.txt'
+[1.020s] writing manifest file '../../build/traj_smoother_py/traj_smoother_py.egg-info/SOURCES.txt'
+[1.020s] running build
+[1.020s] running build_py
+[1.020s] running install
+[1.020s] running install_lib
+[1.022s] running install_data
+[1.022s] running install_egg_info
+[1.023s] removing '/home/holms/Projects/lerobot/TG_Robot/install/traj_smoother_py/lib/python3.10/site-packages/traj_smoother_py-0.0.0-py3.10.egg-info' (and everything under it)
+[1.023s] Copying ../../build/traj_smoother_py/traj_smoother_py.egg-info to /home/holms/Projects/lerobot/TG_Robot/install/traj_smoother_py/lib/python3.10/site-packages/traj_smoother_py-0.0.0-py3.10.egg-info
+[1.024s] running install_scripts
+[1.038s] Installing traj_smoother script to /home/holms/Projects/lerobot/TG_Robot/install/traj_smoother_py/lib/traj_smoother_py
+[1.038s] writing list of installed files to '/home/holms/Projects/lerobot/TG_Robot/build/traj_smoother_py/install.log'
+[1.136s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/src/traj_smoother_py' returned '0': PYTHONPATH=/home/holms/Projects/lerobot/TG_Robot/build/traj_smoother_py/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/holms/Projects/lerobot/TG_Robot/install/traj_smoother_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/traj_smoother_py build --build-base /home/holms/Projects/lerobot/TG_Robot/build/traj_smoother_py/build install --record /home/holms/Projects/lerobot/TG_Robot/build/traj_smoother_py/install.log --single-version-externally-managed install_data

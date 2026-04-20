@@ -1,0 +1,1 @@
+/home/holms/Projects/lerobot/TG_Robot/build/robot_bringup/ament_cmake_environment_hooks/local_setup.bash

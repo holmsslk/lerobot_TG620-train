@@ -1,0 +1,20 @@
+running egg_info
+writing ../../build/robot_input/robot_input.egg-info/PKG-INFO
+writing dependency_links to ../../build/robot_input/robot_input.egg-info/dependency_links.txt
+writing entry points to ../../build/robot_input/robot_input.egg-info/entry_points.txt
+writing requirements to ../../build/robot_input/robot_input.egg-info/requires.txt
+writing top-level names to ../../build/robot_input/robot_input.egg-info/top_level.txt
+reading manifest file '../../build/robot_input/robot_input.egg-info/SOURCES.txt'
+writing manifest file '../../build/robot_input/robot_input.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/holms/Projects/lerobot/TG_Robot/install/robot_input/lib/python3.10/site-packages/robot_input-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/robot_input/robot_input.egg-info to /home/holms/Projects/lerobot/TG_Robot/install/robot_input/lib/python3.10/site-packages/robot_input-0.0.0-py3.10.egg-info
+running install_scripts
+Installing robot_input_keyboard script to /home/holms/Projects/lerobot/TG_Robot/install/robot_input/lib/robot_input
+Installing robot_input_tcp script to /home/holms/Projects/lerobot/TG_Robot/install/robot_input/lib/robot_input
+writing list of installed files to '/home/holms/Projects/lerobot/TG_Robot/build/robot_input/install.log'

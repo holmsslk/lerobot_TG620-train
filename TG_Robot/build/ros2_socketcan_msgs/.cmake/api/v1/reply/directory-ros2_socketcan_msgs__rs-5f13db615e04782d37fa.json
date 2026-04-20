@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "ros2_socketcan_msgs__rs",
+		"source" : "/home/holms/Projects/lerobot/TG_Robot/build/ros2_socketcan_msgs/ros2_socketcan_msgs__rs"
+	}
+}

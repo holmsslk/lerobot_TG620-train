@@ -1,0 +1,49 @@
+[0.033s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake /home/holms/Projects/lerobot/TG_Robot/src/robot_bringup -DCMAKE_INSTALL_PREFIX=/home/holms/Projects/lerobot/TG_Robot/install/robot_bringup
+[0.359s] -- The C compiler identification is GNU 11.4.0
+[0.735s] -- The CXX compiler identification is GNU 11.4.0
+[0.759s] -- Detecting C compiler ABI info
+[1.023s] -- Detecting C compiler ABI info - done
+[1.027s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.028s] -- Detecting C compile features
+[1.028s] -- Detecting C compile features - done
+[1.028s] -- Detecting CXX compiler ABI info
+[1.105s] -- Detecting CXX compiler ABI info - done
+[1.109s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.109s] -- Detecting CXX compile features
+[1.110s] -- Detecting CXX compile features - done
+[1.152s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.290s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.402s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.486s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.489s] -- Added test 'lint_cmake' to check CMake code style
+[1.489s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.491s] -- Added test 'xmllint' to check XML markup files
+[1.494s] -- Configuring done
+[1.500s] -- Generating done
+[1.505s] -- Build files have been written to: /home/holms/Projects/lerobot/TG_Robot/build/robot_bringup
+[1.519s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake /home/holms/Projects/lerobot/TG_Robot/src/robot_bringup -DCMAKE_INSTALL_PREFIX=/home/holms/Projects/lerobot/TG_Robot/install/robot_bringup
+[1.520s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --build /home/holms/Projects/lerobot/TG_Robot/build/robot_bringup -- -j8 -l8
+[1.559s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --build /home/holms/Projects/lerobot/TG_Robot/build/robot_bringup -- -j8 -l8
+[1.560s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --install /home/holms/Projects/lerobot/TG_Robot/build/robot_bringup
+[1.567s] -- Install configuration: ""
+[1.567s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/launch
+[1.567s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/launch/arm620_real.launch.py
+[1.567s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/launch/arm380_real.launch.py
+[1.567s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/launch/robot_gazebo.launch.py
+[1.567s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/launch/robot_real.launch.py
+[1.567s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/ament_index/resource_index/package_run_dependencies/robot_bringup
+[1.567s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/ament_index/resource_index/parent_prefix_path/robot_bringup
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/environment/ament_prefix_path.sh
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/environment/ament_prefix_path.dsv
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/environment/path.sh
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/environment/path.dsv
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/local_setup.bash
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/local_setup.sh
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/local_setup.zsh
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/local_setup.dsv
+[1.568s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/package.dsv
+[1.569s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/ament_index/resource_index/packages/robot_bringup
+[1.569s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/cmake/robot_bringupConfig.cmake
+[1.569s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/cmake/robot_bringupConfig-version.cmake
+[1.569s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_bringup/share/robot_bringup/package.xml
+[1.574s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --install /home/holms/Projects/lerobot/TG_Robot/build/robot_bringup

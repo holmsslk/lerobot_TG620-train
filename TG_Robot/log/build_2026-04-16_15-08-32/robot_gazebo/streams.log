@@ -1,0 +1,49 @@
+[0.218s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake /home/holms/Projects/lerobot/TG_Robot/src/robot_gazebo -DCMAKE_INSTALL_PREFIX=/home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo
+[0.347s] -- The C compiler identification is GNU 11.4.0
+[0.722s] -- The CXX compiler identification is GNU 11.4.0
+[0.747s] -- Detecting C compiler ABI info
+[1.000s] -- Detecting C compiler ABI info - done
+[1.003s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.005s] -- Detecting C compile features
+[1.006s] -- Detecting C compile features - done
+[1.016s] -- Detecting CXX compiler ABI info
+[1.094s] -- Detecting CXX compiler ABI info - done
+[1.101s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.101s] -- Detecting CXX compile features
+[1.101s] -- Detecting CXX compile features - done
+[1.141s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.276s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.390s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.474s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.477s] -- Added test 'lint_cmake' to check CMake code style
+[1.478s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.479s] -- Added test 'xmllint' to check XML markup files
+[1.482s] -- Configuring done
+[1.489s] -- Generating done
+[1.493s] -- Build files have been written to: /home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo
+[1.504s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake /home/holms/Projects/lerobot/TG_Robot/src/robot_gazebo -DCMAKE_INSTALL_PREFIX=/home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo
+[1.505s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --build /home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo -- -j8 -l8
+[1.549s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --build /home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo -- -j8 -l8
+[1.551s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --install /home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo
+[1.557s] -- Install configuration: ""
+[1.557s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/launch
+[1.557s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/launch/robot_gazebo.launch.py
+[1.557s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/config
+[1.557s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/config/gazebo_arm620.urdf.xacro
+[1.558s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/config/gazebo_arm380.urdf.xacro
+[1.558s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/ament_index/resource_index/package_run_dependencies/robot_gazebo
+[1.558s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/ament_index/resource_index/parent_prefix_path/robot_gazebo
+[1.559s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/environment/ament_prefix_path.sh
+[1.559s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/environment/ament_prefix_path.dsv
+[1.559s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/environment/path.sh
+[1.561s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/environment/path.dsv
+[1.561s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/local_setup.bash
+[1.561s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/local_setup.sh
+[1.561s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/local_setup.zsh
+[1.561s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/local_setup.dsv
+[1.561s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/package.dsv
+[1.561s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/ament_index/resource_index/packages/robot_gazebo
+[1.562s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/cmake/robot_gazeboConfig.cmake
+[1.562s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/cmake/robot_gazeboConfig-version.cmake
+[1.562s] -- Installing: /home/holms/Projects/lerobot/TG_Robot/install/robot_gazebo/share/robot_gazebo/package.xml
+[1.576s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/traj_smoother_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_test_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_input:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/example_py:/home/holms/Projects/TG_Robot/robot_base_v1.1/install/robot_dynamics:/opt/ros/humble /usr/bin/cmake --install /home/holms/Projects/lerobot/TG_Robot/build/robot_gazebo

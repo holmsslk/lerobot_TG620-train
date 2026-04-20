@@ -1,0 +1,4 @@
+[console_scripts]
+robot_test_py = robot_test_py.robot_test_py:main
+robot_test_py2 = robot_test_py.robot_test_py2:main
+

@@ -1,0 +1,43 @@
+[0.560s] Invoking command in '/home/holms/Projects/lerobot/TG_Robot/src/tg_lerobot_bridge': PYTHONPATH=/home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/tg_lerobot_bridge build --build-base /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build install --record /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/install.log --single-version-externally-managed install_data
+[0.757s] running egg_info
+[0.757s] creating ../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info
+[0.757s] writing ../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info/PKG-INFO
+[0.757s] writing dependency_links to ../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info/dependency_links.txt
+[0.758s] writing entry points to ../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info/entry_points.txt
+[0.758s] writing requirements to ../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info/requires.txt
+[0.758s] writing top-level names to ../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info/top_level.txt
+[0.759s] writing manifest file '../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info/SOURCES.txt'
+[0.760s] reading manifest file '../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info/SOURCES.txt'
+[0.762s] writing manifest file '../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info/SOURCES.txt'
+[0.763s] running build
+[0.763s] running build_py
+[0.763s] creating /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build
+[0.763s] creating /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build/lib
+[0.764s] creating /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build/lib/tg_lerobot_bridge
+[0.764s] copying tg_lerobot_bridge/__init__.py -> /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build/lib/tg_lerobot_bridge
+[0.764s] copying tg_lerobot_bridge/camera_bridge_node.py -> /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build/lib/tg_lerobot_bridge
+[0.764s] copying tg_lerobot_bridge/control_bridge_node.py -> /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build/lib/tg_lerobot_bridge
+[0.764s] running install
+[0.765s] running install_lib
+[0.765s] creating /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg_lerobot_bridge
+[0.766s] copying /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build/lib/tg_lerobot_bridge/__init__.py -> /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg_lerobot_bridge
+[0.766s] copying /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build/lib/tg_lerobot_bridge/camera_bridge_node.py -> /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg_lerobot_bridge
+[0.766s] copying /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build/lib/tg_lerobot_bridge/control_bridge_node.py -> /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg_lerobot_bridge
+[0.768s] byte-compiling /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg_lerobot_bridge/__init__.py to __init__.cpython-310.pyc
+[0.768s] byte-compiling /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg_lerobot_bridge/camera_bridge_node.py to camera_bridge_node.cpython-310.pyc
+[0.768s] byte-compiling /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg_lerobot_bridge/control_bridge_node.py to control_bridge_node.cpython-310.pyc
+[0.769s] running install_data
+[0.769s] creating /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share
+[0.769s] creating /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/ament_index
+[0.770s] creating /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/ament_index/resource_index
+[0.771s] creating /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/ament_index/resource_index/packages
+[0.771s] copying resource/tg_lerobot_bridge -> /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/ament_index/resource_index/packages
+[0.771s] creating /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/tg_lerobot_bridge
+[0.771s] copying package.xml -> /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/share/tg_lerobot_bridge
+[0.771s] running install_egg_info
+[0.773s] Copying ../../build/tg_lerobot_bridge/tg_lerobot_bridge.egg-info to /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages/tg_lerobot_bridge-0.0.0-py3.10.egg-info
+[0.774s] running install_scripts
+[0.789s] Installing tg_arm620_control_bridge script to /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/tg_lerobot_bridge
+[0.790s] Installing tg_camera_zmq_bridge script to /home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/tg_lerobot_bridge
+[0.790s] writing list of installed files to '/home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/install.log'
+[0.806s] Invoked command in '/home/holms/Projects/lerobot/TG_Robot/src/tg_lerobot_bridge' returned '0': PYTHONPATH=/home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/holms/Projects/lerobot/TG_Robot/install/tg_lerobot_bridge/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/tg_lerobot_bridge build --build-base /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/build install --record /home/holms/Projects/lerobot/TG_Robot/build/tg_lerobot_bridge/install.log --single-version-externally-managed install_data

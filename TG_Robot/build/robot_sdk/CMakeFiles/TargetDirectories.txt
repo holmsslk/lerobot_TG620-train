@@ -1,0 +1,11 @@
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/uninstall.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/robot_sdk_uninstall.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/robot_sdk_lib.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/robot_sdk.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/test.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/edit_cache.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/rebuild_cache.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/list_install_components.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/install.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/install/local.dir
+/home/holms/Projects/lerobot/TG_Robot/build/robot_sdk/CMakeFiles/install/strip.dir
