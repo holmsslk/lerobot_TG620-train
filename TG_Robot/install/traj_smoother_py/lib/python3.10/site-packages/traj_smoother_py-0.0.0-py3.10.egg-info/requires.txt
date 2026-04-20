@@ -1,4 +1,0 @@
-rclpy
-scipy
-setuptools
-trajectory-msgs

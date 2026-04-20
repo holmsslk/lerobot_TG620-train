@@ -1,1 +1,0 @@
-/home/holms/Projects/lerobot/TG_Robot/src/robot_description/launch/arm380_display.launch.py

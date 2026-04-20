@@ -1,1 +1,0 @@
-/home/holms/Projects/lerobot/TG_Robot/src/robot_bringup/launch/robot_gazebo.launch.py

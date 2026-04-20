@@ -1,2 +1,0 @@
-uint8 key_code
-bool is_pressed

@@ -1,1 +1,0 @@
-/home/holms/Projects/lerobot/TG_Robot/src/robot_description/launch/arm620_display.launch.py

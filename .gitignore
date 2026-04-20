@@ -1,0 +1,19 @@
+# ROS2/colcon build artifacts
+TG_Robot/build/
+TG_Robot/install/
+TG_Robot/log/
+
+# Optional local helper workspace outputs
+TG_Robot/autoinstall_script/build/
+TG_Robot/autoinstall_script/install/
+TG_Robot/autoinstall_script/log/
+
+# Python cache artifacts
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Common tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

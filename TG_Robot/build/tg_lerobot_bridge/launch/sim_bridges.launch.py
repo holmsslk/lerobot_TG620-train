@@ -1,1 +1,0 @@
-/home/holms/Projects/lerobot/TG_Robot/src/tg_lerobot_bridge/launch/sim_bridges.launch.py

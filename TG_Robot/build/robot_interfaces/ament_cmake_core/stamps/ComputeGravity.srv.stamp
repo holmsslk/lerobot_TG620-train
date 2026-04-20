@@ -1,8 +1,0 @@
-# 请求：一批点
-sensor_msgs/JointState[] joint_trajectory
-
----
-# 响应：一批力矩
-sensor_msgs/JointState[] efforts
-
-

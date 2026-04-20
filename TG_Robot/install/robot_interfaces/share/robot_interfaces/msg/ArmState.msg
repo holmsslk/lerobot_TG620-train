@@ -1,2 +1,0 @@
-# geometry_msgs/Quaternion end_effector_quat
-geometry_msgs/Pose end_effector_pose

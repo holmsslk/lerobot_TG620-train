@@ -1,3 +1,0 @@
-[console_scripts]
-example = example_py.example.py:main
-

@@ -1,3 +1,0 @@
-[console_scripts]
-gravity_compensator = robot_dynamics.gravity_compensator:main
-
