@@ -20,6 +20,7 @@ def launch_setup(context, *args, **kwargs):
     package_name = "robot_gazebo"
     robot_model_name = LaunchConfiguration("robot_model_name").perform(context)
     entity_name = LaunchConfiguration("entity_name").perform(context)
+    world_path = LaunchConfiguration("world").perform(context)
 
     pkg_share = get_package_share_directory(package_name)
     urdf_model_path = os.path.join(pkg_share, "config", f"gazebo_{robot_model_name}_lerobot.urdf.xacro")
@@ -43,7 +44,16 @@ def launch_setup(context, *args, **kwargs):
     params = {"robot_description": xml_clean}
 
     start_gazebo_cmd = ExecuteProcess(
-        cmd=["gazebo", "--verbose", "-s", "libgazebo_ros_init.so", "-s", "libgazebo_ros_factory.so"],
+        cmd=[
+            "gazebo",
+            "--verbose",
+            world_path,
+            "-s",
+            "libgazebo_ros_init.so",
+            "-s",
+            "libgazebo_ros_factory.so",
+        ],
+        additional_env={"GAZEBO_MODEL_DATABASE_URI": ""},
         output="screen",
     )
 
@@ -86,6 +96,18 @@ def launch_setup(context, *args, **kwargs):
         ],
         output="screen",
     )
+    load_gripper_position_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "gripper_position_controller",
+            "--controller-manager",
+            "/controller_manager",
+            "--controller-manager-timeout",
+            "120",
+        ],
+        output="screen",
+    )
 
     close_evt1 = RegisterEventHandler(
         event_handler=OnProcessExit(target_action=spawn_entity, on_exit=[load_joint_state_controller])
@@ -95,6 +117,11 @@ def launch_setup(context, *args, **kwargs):
             target_action=load_joint_state_controller, on_exit=[load_joint_position_controller]
         )
     )
+    close_evt3 = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=load_joint_position_controller, on_exit=[load_gripper_position_controller]
+        )
+    )
 
     return [
         start_gazebo_cmd,
@@ -102,10 +129,14 @@ def launch_setup(context, *args, **kwargs):
         spawn_entity,
         close_evt1,
         close_evt2,
+        close_evt3,
     ]
 
 
 def generate_launch_description():
+    pkg_share = get_package_share_directory("robot_gazebo")
+    default_world = os.path.join(pkg_share, "worlds", "arm620_grasp.world")
+
     return LaunchDescription(
         [
             DeclareLaunchArgument(
@@ -117,6 +148,11 @@ def generate_launch_description():
                 "entity_name",
                 default_value="arm620_lerobot",
                 description="Spawned model entity name in Gazebo",
+            ),
+            DeclareLaunchArgument(
+                "world",
+                default_value=default_world,
+                description="Gazebo world file path",
             ),
             OpaqueFunction(function=launch_setup),
         ]

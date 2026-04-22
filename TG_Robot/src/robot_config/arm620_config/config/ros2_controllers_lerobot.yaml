@@ -9,6 +9,9 @@ controller_manager:
     arm_position_controller:
       type: position_controllers/JointGroupPositionController
 
+    gripper_position_controller:
+      type: position_controllers/JointGroupPositionController
+
 arm_position_controller:
   ros__parameters:
     joints:
@@ -18,4 +21,11 @@ arm_position_controller:
       - joint4
       - joint5
       - joint6
+    interface_name: position
+
+gripper_position_controller:
+  ros__parameters:
+    joints:
+      - hand_narrow_loop_joint
+      - hand_wide_loop_joint
     interface_name: position

@@ -8,6 +8,10 @@ def generate_launch_description():
     cmd_port = LaunchConfiguration("cmd_port")
     state_port = LaunchConfiguration("state_port")
     control_hz = LaunchConfiguration("control_hz")
+    gripper_open_joint_1 = LaunchConfiguration("gripper_open_joint_1")
+    gripper_close_joint_1 = LaunchConfiguration("gripper_close_joint_1")
+    gripper_open_joint_2 = LaunchConfiguration("gripper_open_joint_2")
+    gripper_close_joint_2 = LaunchConfiguration("gripper_close_joint_2")
 
     image_topic = LaunchConfiguration("image_topic")
     camera_name = LaunchConfiguration("camera_name")
@@ -29,6 +33,10 @@ def generate_launch_description():
                 "cmd_port": cmd_port,
                 "state_port": state_port,
                 "control_hz": control_hz,
+                "gripper_open_joint_1": gripper_open_joint_1,
+                "gripper_close_joint_1": gripper_close_joint_1,
+                "gripper_open_joint_2": gripper_open_joint_2,
+                "gripper_close_joint_2": gripper_close_joint_2,
             }
         ],
     )
@@ -68,6 +76,10 @@ def generate_launch_description():
             DeclareLaunchArgument("cmd_port", default_value="6001"),
             DeclareLaunchArgument("state_port", default_value="6002"),
             DeclareLaunchArgument("control_hz", default_value="30.0"),
+            DeclareLaunchArgument("gripper_open_joint_1", default_value="-0.75"),
+            DeclareLaunchArgument("gripper_close_joint_1", default_value="0.15"),
+            DeclareLaunchArgument("gripper_open_joint_2", default_value="0.75"),
+            DeclareLaunchArgument("gripper_close_joint_2", default_value="-0.15"),
             DeclareLaunchArgument("image_topic", default_value="/front_camera/front_camera/image_raw"),
             DeclareLaunchArgument("camera_name", default_value="front_camera"),
             DeclareLaunchArgument("camera_port", default_value="5555"),

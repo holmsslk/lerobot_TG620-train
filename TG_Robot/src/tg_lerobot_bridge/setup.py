@@ -25,6 +25,7 @@ setup(
         "console_scripts": [
             "tg_arm620_control_bridge = tg_lerobot_bridge.control_bridge_node:main",
             "tg_arm620_sim_control_bridge = tg_lerobot_bridge.sim_control_bridge_node:main",
+            "tg_arm620_gripper_scan = tg_lerobot_bridge.gripper_scan_node:main",
             "tg_camera_zmq_bridge = tg_lerobot_bridge.camera_bridge_node:main",
         ],
     },

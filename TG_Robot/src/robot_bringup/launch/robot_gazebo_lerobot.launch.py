@@ -9,6 +9,8 @@ from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
     robot_model_name = LaunchConfiguration("robot_model_name")
+    entity_name = LaunchConfiguration("entity_name")
+    world = LaunchConfiguration("world")
     cmd_port = LaunchConfiguration("cmd_port")
     state_port = LaunchConfiguration("state_port")
     control_hz = LaunchConfiguration("control_hz")
@@ -20,6 +22,10 @@ def generate_launch_description():
     camera_name_2 = LaunchConfiguration("camera_name_2")
     camera_port_2 = LaunchConfiguration("camera_port_2")
     camera_fps_2 = LaunchConfiguration("camera_fps_2")
+    gripper_open_joint_1 = LaunchConfiguration("gripper_open_joint_1")
+    gripper_close_joint_1 = LaunchConfiguration("gripper_close_joint_1")
+    gripper_open_joint_2 = LaunchConfiguration("gripper_open_joint_2")
+    gripper_close_joint_2 = LaunchConfiguration("gripper_close_joint_2")
 
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -29,7 +35,11 @@ def generate_launch_description():
                 "robot_gazebo_lerobot.launch.py",
             )
         ),
-        launch_arguments={"robot_model_name": robot_model_name}.items(),
+        launch_arguments={
+            "robot_model_name": robot_model_name,
+            "entity_name": entity_name,
+            "world": world,
+        }.items(),
     )
 
     bridge_launch = IncludeLaunchDescription(
@@ -52,12 +62,24 @@ def generate_launch_description():
             "camera_name_2": camera_name_2,
             "camera_port_2": camera_port_2,
             "camera_fps_2": camera_fps_2,
+            "gripper_open_joint_1": gripper_open_joint_1,
+            "gripper_close_joint_1": gripper_close_joint_1,
+            "gripper_open_joint_2": gripper_open_joint_2,
+            "gripper_close_joint_2": gripper_close_joint_2,
         }.items(),
+    )
+
+    default_world = os.path.join(
+        get_package_share_directory("robot_gazebo"),
+        "worlds",
+        "arm620_grasp.world",
     )
 
     return LaunchDescription(
         [
             DeclareLaunchArgument("robot_model_name", default_value="arm620"),
+            DeclareLaunchArgument("entity_name", default_value="arm620_lerobot"),
+            DeclareLaunchArgument("world", default_value=default_world),
             DeclareLaunchArgument("cmd_port", default_value="6001"),
             DeclareLaunchArgument("state_port", default_value="6002"),
             DeclareLaunchArgument("control_hz", default_value="30.0"),
@@ -71,6 +93,10 @@ def generate_launch_description():
             DeclareLaunchArgument("camera_name_2", default_value="side_front_camera"),
             DeclareLaunchArgument("camera_port_2", default_value="5556"),
             DeclareLaunchArgument("camera_fps_2", default_value="30.0"),
+            DeclareLaunchArgument("gripper_open_joint_1", default_value="-0.75"),
+            DeclareLaunchArgument("gripper_close_joint_1", default_value="0.15"),
+            DeclareLaunchArgument("gripper_open_joint_2", default_value="0.75"),
+            DeclareLaunchArgument("gripper_close_joint_2", default_value="-0.15"),
             gazebo_launch,
             bridge_launch,
         ]
