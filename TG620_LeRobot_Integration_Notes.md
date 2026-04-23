@@ -1,169 +1,223 @@
-# TG620 接入 LeRobot 框架实现总结
+# TG620 接入 LeRobot 框架设计与实现说明（当前版）
 
-本文记录 `arm620(TG620)` 接入 `LeRobot` 的完整实现路径，覆盖：
-- 实现过程（从接口定义到联调验收）
-- 需要修改的文件清单（按模块分类）
-- 可复用经验（后续接入其他机械臂可直接套用）
+本文记录 `arm620 (TG620)` 接入 `LeRobot` 的当前实现状态，覆盖：
 
-## 1. 接入目标与接口约定
+- 设计思路与系统架构
+- 关键实现模块与文件改动范围
+- 日常使用方法（teleoperate / record / replay）
+- 当前版本已知行为与排查建议
+- 复用到其他机械臂的通用模板
 
-本次接入采用“双环境 + ZMQ 桥接”架构：
-- ROS2/TG_Robot 负责机械臂控制与仿真
-- LeRobot 负责 teleop/record/replay/train
-- 两侧通过 ZMQ 交换关节状态、控制命令与图像流
+## 1. 目标与接口契约
 
-统一接口约定如下：
-- 关节命名顺序：`joint1` 到 `joint6`
-- 关节单位：全部使用 `rad`（action 和 observation 一致）
-- 夹爪语义：`gripper.pos` 范围 `0~100`，桥接层映射固定 `type=1, speed=40, effort=100`
-- 控制频率：30Hz
-- 限位（来自 URDF）：  
-  `joint1/4/6 = [-2.967, 2.967]`  
-  `joint2/3/5 = [-1.5708, 1.5708]`
-- 速度/加速度上限：`150 deg/s`、`150 deg/s^2` 转换为 `2.61799 rad/s`、`2.61799 rad/s^2`
+本项目优先稳定复用 LeRobot 工作流，不改上层 CLI 语义，仅替换底层仿真/硬件执行链路。
 
-## 2. 实现过程（按阶段）
+统一接口契约：
 
-### 阶段 A：LeRobot 新增 TG620 机器人类型
-1. 定义 `TGArm620Config`，固化通信端口、频率、限位、夹爪参数。
-2. 实现 `TGArm620Follower`：
-   - ZMQ PUSH 发送控制命令
-   - ZMQ SUB 接收状态
-   - 关节/夹爪裁剪
-   - 可选接入 ZMQ 相机
-3. 注册工厂映射，使 CLI 可识别 `--robot.type=tg_arm620_follower`。
+- 关节顺序：`joint1` 到 `joint6`
+- 关节单位：`rad`（action/observation 都是弧度）
+- 夹爪接口：`gripper.pos`，范围 `0~100`
+- 夹爪语义映射：`type=1, speed=40, effort=100`（桥接层固定）
+- 控制频率目标：`30Hz`
+- 速度/加速度上限：`150 deg/s`、`150 deg/s^2`，换算为 `2.61799 rad/s`、`2.61799 rad/s^2`
+- 视觉输入：双路相机（front / side_front）
 
-### 阶段 B：新增 TG620 键盘遥操作器
-1. 定义 `TGArm620KeyboardConfig`（按键映射、步长、限位）。
-2. 实现 `TGArm620Keyboard`（按键状态机、home、gripper 开合）。
-3. 注册工厂映射，使 CLI 可识别 `--teleop.type=tg_arm620_keyboard`。
+关节限位（来自 URDF）：
 
-### 阶段 C：打通 LeRobot CLI 入口
-在 `teleoperate/record/replay/calibrate/find_joint_limits` 等脚本中引入 `tg_arm620` 与 `tg_arm620_keyboard`，确保 draccus 能解析对应 type。
+- `joint1/4/6 = [-2.967, 2.967]`
+- `joint2/3/5 = [-1.5708, 1.5708]`
 
-### 阶段 D：ROS2 桥接实现（真机 + 仿真）
-1. 新建 `tg_lerobot_bridge` ROS2 包。
-2. 实现三类节点：
-   - 真机控制桥：`tg_arm620_control_bridge`
-   - 仿真控制桥：`tg_arm620_sim_control_bridge`
-   - 相机桥：`tg_camera_zmq_bridge`
-3. `sim_bridges.launch.py` 统一启动控制桥和双路相机桥。
+## 2. 总体架构
 
-### 阶段 E：Gazebo 侧集成
-1. 新建仿真专用模型 `gazebo_arm620_lerobot.urdf.xacro`：
-   - 引用 arm620 本体 xacro
-   - 增加两路外置相机（front/side_front）
-   - 挂载 `gazebo_ros2_control` 与 position 控制接口
-2. 新增 `ros2_controllers_lerobot.yaml`，定义：
-   - `joint_state_broadcaster`
-   - `arm_position_controller`
-3. 新增 `robot_gazebo_lerobot.launch.py`：
-   - 启 Gazebo
-   - 生成/发布 `robot_description`
-   - 启动控制器
-4. 在 `robot_bringup` 中增加聚合 launch，同时拉起 Gazebo 与桥接。
+采用“双环境 + ZMQ 桥接”设计：
 
-### 阶段 F：联调与采集闭环
-1. 验证控制器 `active`，验证 joint_states 与图像 topic。
-2. `lerobot-teleoperate` 键盘控制验证。
-3. `lerobot-record` 采集数据集（双相机）。
-4. `lerobot-replay` 回放验证。
+- `LeRobot`：负责 `teleoperate / record / replay / train/eval`
+- `TG_Robot (ROS2)`：负责仿真/真机执行与相机发布
+- `ZMQ`：负责三类数据通道
+  - 命令通道（关节 + 夹爪）
+  - 状态通道（关节 + 夹爪）
+  - 图像通道（JPEG base64）
 
-## 3. 需要修改的文件清单
+后端可切换：
 
-### 3.1 LeRobot 侧（`lerobot/`）
+- Gazebo Classic 链路（备选）
+- MuJoCo 链路（当前推荐）
+
+关键点是：**LeRobot 侧接口不变**，后端可替换。
+
+## 3. 当前实现分层
+
+### 3.1 LeRobot 侧
+
+1. 新增机器人类型 `tg_arm620_follower`，统一对外 `rad` 接口。
+2. 新增遥操作器 `tg_arm620_keyboard`。
+3. 将新类型注入 `lerobot-teleoperate / record / replay / calibrate / find_joint_limits` 等入口。
+4. 新增并扩展测试，覆盖 follower 与 teleop 行为。
+
+### 3.2 TG_Robot 侧
+
+1. 新增 `tg_lerobot_bridge` 包。
+2. 提供真机桥、Gazebo 仿真桥、MuJoCo 仿真桥、相机桥。
+3. 提供 `robot_bringup` 聚合 launch：
+   - Gazebo 聚合入口
+   - MuJoCo 聚合入口
+4. 维护 MuJoCo 模型 `arm620_omnipicker_mujoco.xml`，实现 6 轴 + 夹爪联动 + 双相机。
+
+## 4. 关键设计选择
+
+### 4.1 对外统一弧度接口
+
+不在 LeRobot 侧混用 deg/rad，避免训练数据与控制链路单位错配。
+
+### 4.2 约束放在桥接层
+
+关节裁剪、速度限幅、加速度限幅在桥接层执行，保证上层策略异常时仍可控。
+
+### 4.3 仿真后端可替换
+
+LeRobot 不感知 Gazebo/MuJoCo 差异，只感知统一 ZMQ 协议。
+
+### 4.4 键盘输入后备模式
+
+针对 VM/Wayland 下 `pynput` 全局监听不稳定的问题，`tg_arm620_keyboard` 增加：
+
+- `input_backend=auto|pynput|stdin`
+- `auto` 在 Wayland 环境默认走 `stdin`
+- `stdin` 模式通过终端读键，避免窗口焦点竞争导致“无响应”
+
+## 5. 文件修改清单（按模块）
+
+## 5.1 LeRobot 侧（`lerobot/`）
 
 | 文件 | 作用 |
 |---|---|
-| `src/lerobot/robots/tg_arm620/config_tg_arm620.py` | TG620 机器人配置与限位/约束参数 |
-| `src/lerobot/robots/tg_arm620/tg_arm620.py` | TG620 follower 具体实现（ZMQ 控制/状态） |
-| `src/lerobot/robots/tg_arm620/__init__.py` | 导出 TG620 config 与 follower |
-| `src/lerobot/robots/utils.py` | 注册 `tg_arm620_follower` 工厂分发 |
-| `src/lerobot/teleoperators/tg_arm620_keyboard/config_tg_arm620_keyboard.py` | 键盘 teleop 配置 |
-| `src/lerobot/teleoperators/tg_arm620_keyboard/tg_arm620_keyboard.py` | 键盘 teleop 行为实现 |
-| `src/lerobot/teleoperators/tg_arm620_keyboard/__init__.py` | 导出 teleop 配置与实现 |
-| `src/lerobot/teleoperators/utils.py` | 注册 `tg_arm620_keyboard` 工厂分发 |
-| `src/lerobot/scripts/lerobot_teleoperate.py` | 注入 tg_arm620/tg_arm620_keyboard 到 CLI 类型解析 |
-| `src/lerobot/scripts/lerobot_record.py` | 注入 tg_arm620/tg_arm620_keyboard + ZMQCameraConfig |
-| `src/lerobot/scripts/lerobot_replay.py` | 注入 tg_arm620 到 CLI 类型解析 |
+| `src/lerobot/robots/tg_arm620/config_tg_arm620.py` | TG620 配置与约束参数 |
+| `src/lerobot/robots/tg_arm620/tg_arm620.py` | TG620 follower（ZMQ 命令/状态/相机） |
+| `src/lerobot/robots/tg_arm620/__init__.py` | 导出 TG620 机器人类型 |
+| `src/lerobot/robots/utils.py` | 注册 `tg_arm620_follower` |
+| `src/lerobot/teleoperators/tg_arm620_keyboard/config_tg_arm620_keyboard.py` | 遥操作配置（含 `input_backend`） |
+| `src/lerobot/teleoperators/tg_arm620_keyboard/tg_arm620_keyboard.py` | 遥操作实现（`pynput` + `stdin` 后备） |
+| `src/lerobot/teleoperators/tg_arm620_keyboard/__init__.py` | 导出 teleop 类型 |
+| `src/lerobot/teleoperators/utils.py` | 注册 `tg_arm620_keyboard` |
+| `src/lerobot/scripts/lerobot_teleoperate.py` | 注入 tg_arm620 + tg_arm620_keyboard 解析 |
+| `src/lerobot/scripts/lerobot_record.py` | 注入 tg_arm620 + ZMQCameraConfig |
+| `src/lerobot/scripts/lerobot_replay.py` | 注入 tg_arm620 解析 |
 | `src/lerobot/scripts/lerobot_calibrate.py` | 注入 tg_arm620/tg_arm620_keyboard |
 | `src/lerobot/scripts/lerobot_find_joint_limits.py` | 注入 tg_arm620/tg_arm620_keyboard |
-| `src/lerobot/rl/eval_policy.py` | 注入 tg_arm620/tg_arm620_keyboard（评估侧解析） |
-| `src/lerobot/async_inference/robot_client.py` | 注入 tg_arm620（异步推理客户端解析） |
-| `tests/robots/test_tg_arm620_follower.py` | follower 单测（连接/裁剪/状态） |
-| `tests/teleoperators/test_tg_arm620_keyboard.py` | teleop 单测（按键/限位/home） |
+| `src/lerobot/rl/eval_policy.py` | 评估侧类型注入 |
+| `src/lerobot/async_inference/robot_client.py` | 异步推理侧类型注入 |
+| `tests/robots/test_tg_arm620_follower.py` | follower 单测 |
+| `tests/teleoperators/test_tg_arm620_keyboard.py` | teleop 单测（含 `stdin` 后备） |
 
-### 3.2 TG_Robot 侧（`TG_Robot/`）
+### 5.2 TG_Robot 侧（`TG_Robot/`）
 
 | 文件 | 作用 |
 |---|---|
-| `src/tg_lerobot_bridge/setup.py` | 桥接包入口脚本注册 |
-| `src/tg_lerobot_bridge/package.xml` | 桥接包依赖声明 |
-| `src/tg_lerobot_bridge/tg_lerobot_bridge/control_bridge_node.py` | 真机控制桥（ZMQ -> motor_control_msg / gripper_control_msg） |
-| `src/tg_lerobot_bridge/tg_lerobot_bridge/sim_control_bridge_node.py` | 仿真控制桥（ZMQ -> /arm_position_controller/commands） |
-| `src/tg_lerobot_bridge/tg_lerobot_bridge/camera_bridge_node.py` | ROS 图像 -> ZMQ 图像流桥 |
-| `src/tg_lerobot_bridge/launch/sim_bridges.launch.py` | 一键启动控制桥与双相机桥 |
-| `src/robot_gazebo/config/gazebo_arm620_lerobot.urdf.xacro` | 仿真模型、相机、ros2_control 插件 |
-| `src/robot_config/arm620_config/config/ros2_controllers_lerobot.yaml` | LeRobot 仿真控制器配置 |
-| `src/robot_gazebo/launch/robot_gazebo_lerobot.launch.py` | Gazebo + robot_description + controller spawner（含注释净化） |
-| `src/robot_bringup/launch/robot_gazebo_lerobot.launch.py` | bringup 聚合入口（Gazebo + sim bridge + camera bridge） |
-| `src/robot_description/arm620/arm620.urdf.xacro` | 关节顺序/限位来源参考（本次作为接口基准） |
+| `src/tg_lerobot_bridge/setup.py` | 桥接脚本注册 |
+| `src/tg_lerobot_bridge/package.xml` | 桥接依赖 |
+| `src/tg_lerobot_bridge/tg_lerobot_bridge/control_bridge_node.py` | 真机控制桥 |
+| `src/tg_lerobot_bridge/tg_lerobot_bridge/sim_control_bridge_node.py` | Gazebo 控制桥 |
+| `src/tg_lerobot_bridge/tg_lerobot_bridge/camera_bridge_node.py` | ROS 图像到 ZMQ |
+| `src/tg_lerobot_bridge/tg_lerobot_bridge/mujoco_sim_node.py` | MuJoCo 仿真桥（控制 + 状态 + 相机） |
+| `src/tg_lerobot_bridge/launch/sim_bridges.launch.py` | Gazebo 链路桥接聚合 |
+| `src/tg_lerobot_bridge/launch/mujoco_sim.launch.py` | MuJoCo 桥接入口 |
+| `src/tg_lerobot_bridge/models/arm620_omnipicker_mujoco.xml` | MuJoCo 机器人与场景模型 |
+| `src/robot_gazebo/config/gazebo_arm620_lerobot.urdf.xacro` | Gazebo 模型与相机 |
+| `src/robot_config/arm620_config/config/ros2_controllers_lerobot.yaml` | Gazebo 控制器配置 |
+| `src/robot_gazebo/launch/robot_gazebo_lerobot.launch.py` | Gazebo 启动（含 robot_description 处理） |
+| `src/robot_bringup/launch/robot_gazebo_lerobot.launch.py` | Gazebo 一键入口 |
+| `src/robot_bringup/launch/robot_mujoco_lerobot.launch.py` | MuJoCo 一键入口 |
 
-## 4. 可复用经验（下次接入其他机械臂直接照做）
+## 6. 使用方法（当前推荐 MuJoCo）
 
-### 4.1 强制先定“外部接口契约”
-先冻结这些字段再写代码：
-- 关节名与顺序
-- 单位（建议统一 rad）
-- 夹爪语义（1 维或多维）
-- 控制频率与时延预算
-- 限位来源（URDF 或厂家参数）
+### 6.1 终端 1：启动 MuJoCo
 
-若不先冻结契约，后续会在 teleop/record/replay/bridge 四层反复返工。
+```bash
+cd ~/Projects/lerobot/TG_Robot
+source /opt/ros/humble/setup.bash
+source install/setup.bash
 
-### 4.2 “桥接层限幅”比“上层限幅”更稳
-本项目在桥接层执行：
-- 关节限位裁剪
-- 速度限幅
-- 加速度限幅
+export MUJOCO_GL=egl
+ros2 launch robot_bringup robot_mujoco_lerobot.launch.py \
+  mujoco_home:=/home/holms/Projects/mujoco/mujoco-3.3.0 \
+  viewer:=false
+```
 
-这样可以保证即使上层策略输出异常，底层也有兜底。
+### 6.2 终端 2：键盘遥操作
 
-### 4.3 Gazebo 与 LeRobot 分层解耦
-- Gazebo 只关注 ROS 控制器与图像发布
-- LeRobot 只面向统一 ZMQ 协议
+```bash
+cd ~/Projects/lerobot/lerobot
+uv run --no-sync lerobot-teleoperate \
+  --robot.type=tg_arm620_follower \
+  --robot.remote_ip=127.0.0.1 \
+  --robot.cmd_port=6001 \
+  --robot.state_port=6002 \
+  --robot.cameras='{front: {type: zmq, server_address: 127.0.0.1, port: 5555, camera_name: front_camera, width: 640, height: 480, fps: 30}, side: {type: zmq, server_address: 127.0.0.1, port: 5556, camera_name: side_front_camera, width: 640, height: 480, fps: 30}}' \
+  --teleop.type=tg_arm620_keyboard \
+  --teleop.input_backend=stdin \
+  --fps=30 \
+  --teleop_time_s=300 \
+  --display_data=true
+```
 
-优点是后续替换真机或仿真时，上层数据采集/训练脚本无需重写。
+### 6.3 终端 2：采集
 
-### 4.4 避免重复启动桥接
-`robot_bringup/robot_gazebo_lerobot.launch.py` 已包含桥接。  
-如果又手动起 `sim_bridges.launch.py`，会出现端口冲突或“看起来在发命令但不动”的假象。
+```bash
+RUN_ID=$(date +%Y%m%d_%H%M%S)
+DATA_ROOT=./data/tg_arm620_mujoco_${RUN_ID}
+REPO_ID=local/tg_arm620_mujoco_${RUN_ID}
 
-### 4.5 解决 `gazebo_ros2_control` 参数解析坑
-`robot_description` 中含 XML 注释时，`gazebo_ros2_control` 可能参数解析失败。  
-实践中通过 launch 里“发送前移除 XML 注释”可稳定规避。
+uv run --no-sync lerobot-record \
+  --robot.type=tg_arm620_follower \
+  --robot.remote_ip=127.0.0.1 \
+  --robot.cmd_port=6001 \
+  --robot.state_port=6002 \
+  --robot.cameras='{front: {type: zmq, server_address: 127.0.0.1, port: 5555, camera_name: front_camera, width: 640, height: 480, fps: 30}, side: {type: zmq, server_address: 127.0.0.1, port: 5556, camera_name: side_front_camera, width: 640, height: 480, fps: 30}}' \
+  --teleop.type=tg_arm620_keyboard \
+  --teleop.input_backend=stdin \
+  --dataset.repo_id=${REPO_ID} \
+  --dataset.root=${DATA_ROOT} \
+  --dataset.single_task="Teleop arm620 in MuJoCo scene" \
+  --dataset.fps=30 \
+  --dataset.num_episodes=5 \
+  --dataset.episode_time_s=30 \
+  --dataset.reset_time_s=10 \
+  --dataset.video=true \
+  --dataset.push_to_hub=false \
+  --display_data=true
+```
 
-### 4.6 数据集路径与 episode 索引要显式
-- `--dataset.root` 为空时会回退到 HF 缓存目录，容易引发 401/找不到数据。
-- `--dataset.episode` 必须在实际索引范围内（常见只有 `0`）。
+### 6.4 回放
 
-### 4.7 ZMQ 连通性调试建议
-单发命令有时受连接时序影响，建议：
-- connect 后等待短时间
-- 连续发 0.5~1s
-- 同步观察 ROS `commands` 与 `joint_states` 变化
+```bash
+uv run --no-sync lerobot-replay \
+  --robot.type=tg_arm620_follower \
+  --robot.remote_ip=127.0.0.1 \
+  --robot.cmd_port=6001 \
+  --robot.state_port=6002 \
+  --dataset.repo_id=${REPO_ID} \
+  --dataset.root=${DATA_ROOT} \
+  --dataset.episode=0
+```
 
-## 5. 最小复用模板（接入新机械臂）
+## 7. 当前版已知行为与排查
 
-1. 在 LeRobot 新增 `robots/<new_arm>/config + follower`  
-2. 在 LeRobot 新增 `teleoperators/<new_arm>_keyboard`（可选）  
-3. 注册 `robots/utils.py` 与 `teleoperators/utils.py`  
-4. 在 `record/teleoperate/replay` 脚本注入新类型  
-5. 在 ROS2 新增桥接包（控制桥 + 状态桥 + 相机桥）  
-6. 在 Gazebo 模型里挂 `ros2_control` 与相机  
-7. 提供一键 launch（建议 bringup 聚合）  
-8. 先跑 dry-run，再跑 teleop，再跑 record/replay，最后训练
+1. VM/Wayland 下 `pynput` 可能“已连接但无输入事件”。
+   - 解决：`--teleop.input_backend=stdin`。
+2. 开启 MuJoCo viewer 时，viewer 快捷键可能与 teleop 按键竞争。
+   - 解决：采集阶段建议 `viewer:=false`。
+3. 某些接触姿态下，不操作也可能出现轻微晃动。
+   - 成因通常是接触刚度、执行器增益、阻尼组合导致的接触抖动。
+   - 当前文档先记录现象与分析，不在本轮调整参数。
+
+## 8. 可复用经验（接入新机械臂）
+
+1. 先冻结接口契约：关节名/顺序、单位、夹爪语义、频率、限位来源。
+2. 先做桥接层限幅，再做上层策略调参。
+3. 让 LeRobot 只依赖统一 ZMQ 协议，仿真后端可替换。
+4. 给遥操作准备输入后备路径（GUI 全局监听 + 终端本地读取）。
+5. 先跑最小闭环：`teleoperate -> record -> replay`，再进入训练。
 
 ---
 
-如果后续你要把 `arm620` 切换到真机采集，只需要复用同一套 LeRobot 侧接口，把桥接入口从 `sim_control_bridge_node.py` 切到 `control_bridge_node.py` 即可。
+如果后续切换真机采集，只需复用同一套 LeRobot 接口，把桥接入口从仿真桥切到真机桥。

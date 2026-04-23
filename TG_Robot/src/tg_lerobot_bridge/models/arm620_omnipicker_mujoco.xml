@@ -1,0 +1,143 @@
+<mujoco model="arm620_omnipicker_scene">
+  <compiler angle="radian" autolimits="true" meshdir="__ROBOT_DESCRIPTION_MESH_ROOT__"/>
+
+  <option timestep="0.002" gravity="0 0 -9.81" iterations="60" tolerance="1e-8"/>
+
+  <size nconmax="500" njmax="4000"/>
+
+  <default>
+    <joint damping="1.2" armature="0.01"/>
+    <geom friction="1.0 0.08 0.02" condim="3" solref="0.004 1" solimp="0.95 0.99 0.001"/>
+    <position kp="140"/>
+  </default>
+
+  <asset>
+    <mesh name="arm620_base_link" file="arm620/base_link.STL"/>
+    <mesh name="arm620_Link1" file="arm620/Link1.STL"/>
+    <mesh name="arm620_Link2" file="arm620/Link2.STL"/>
+    <mesh name="arm620_Link3" file="arm620/Link3.STL"/>
+    <mesh name="arm620_Link4" file="arm620/Link4.STL"/>
+    <mesh name="arm620_Link5" file="arm620/Link5.STL"/>
+    <mesh name="arm620_Link6" file="arm620/Link6.STL"/>
+
+    <mesh name="pgc_gripper_base_mesh" file="pgc_gripper/base_link.STL"/>
+    <mesh name="pgc_gripper_finger1_mesh" file="pgc_gripper/finger1_Link.STL"/>
+    <mesh name="pgc_gripper_finger2_mesh" file="pgc_gripper/finger2_Link.STL"/>
+
+    <texture
+      name="floor_checker"
+      type="2d"
+      builtin="checker"
+      width="512"
+      height="512"
+      rgb1="0.18 0.20 0.24"
+      rgb2="0.11 0.13 0.16"
+      mark="edge"
+      markrgb="0.28 0.30 0.35"/>
+    <material
+      name="floor_mat"
+      texture="floor_checker"
+      texrepeat="7 7"
+      reflectance="0.06"
+      shininess="0.10"
+      specular="0.10"/>
+  </asset>
+
+  <worldbody>
+    <light name="sun" directional="true" diffuse="0.9 0.9 0.9" specular="0.2 0.2 0.2" pos="0 0 3" dir="0 0 -1"/>
+    <geom name="floor" type="plane" size="2 2 0.1" material="floor_mat"/>
+
+    <!-- Use explicit axes so both cameras look at (0, 0, 0.4) with world-up -->
+    <camera name="front_camera" pos="1.50 0.00 0.40" xyaxes="0 1 0 0 0 1"/>
+    <camera name="side_front_camera" pos="0.00 -1.50 0.40" xyaxes="1 0 0 0 0 1"/>
+
+    <body name="base_link" pos="0 0 0">
+      <inertial pos="-0.0000349 0 0.041738" mass="1.235" fullinertia="0.000693 0.0006922 0.0005921 0 -0.0000008 0"/>
+      <geom name="base_visual" pos="0 0 0" group="1" contype="0" conaffinity="0" rgba="0.5 0.5 1 1" type="mesh" mesh="arm620_base_link"/>
+      <geom name="base_col" type="cylinder" pos="0 0 0.04" size="0.06 0.04" rgba="0 0 0 0"/>
+
+      <body name="Link1" pos="0 0 0.084">
+        <joint name="joint1" type="hinge" axis="0 0 1" limited="true" range="-2.967 2.967" damping="0.2" frictionloss="0"/>
+        <inertial pos="0.0083082 -0.0000009 0.066279" mass="1.0225" fullinertia="0.0003347 0.0002898 0.0002636 0 -0.000007 0"/>
+        <geom name="link1_visual" pos="0 0 0" group="1" contype="0" conaffinity="0" rgba="0.5 0.5 1 1" type="mesh" mesh="arm620_Link1"/>
+        <geom name="link1_col" type="capsule" fromto="0 0 0 0 0 0.13" size="0.035" rgba="0 0 0 0"/>
+
+        <body name="Link2" pos="0 0 0.068718" quat="0.4999982 0.5 -0.5000018 -0.5">
+          <joint name="joint2" type="hinge" axis="0 0 -1" limited="true" range="-1.5708 1.5708" damping="0.2" frictionloss="0"/>
+          <inertial pos="0.0000016 0.19554 -0.0019139" mass="1.925" fullinertia="0.0092613 0.0007553 0.0090845 0 0 -0.0000155"/>
+          <geom name="link2_visual" pos="0 0 0" group="1" contype="0" conaffinity="0" rgba="0.5 0.5 1 1" type="mesh" mesh="arm620_Link2"/>
+          <geom name="link2_col" type="capsule" fromto="0 0 0 0 0.30 0" size="0.028" rgba="0 0 0 0"/>
+
+          <body name="Link3" pos="0 0.30025 0" quat="-0.0000037 -1 0 0">
+            <joint name="joint3" type="hinge" axis="0 0 1" limited="true" range="-1.5708 1.5708" damping="0.2" frictionloss="0"/>
+            <inertial pos="0.0000183 -0.073691 0.010704" mass="0.73" fullinertia="0.0005932 0.0001556 0.0005538 0.0000001 0 -0.0001132"/>
+            <geom name="link3_visual" pos="0 0 0" group="1" contype="0" conaffinity="0" rgba="0.5 0.5 1 1" type="mesh" mesh="arm620_Link3"/>
+            <geom name="link3_col" type="capsule" fromto="0 0 0 0 -0.16 0" size="0.025" rgba="0 0 0 0"/>
+
+            <body name="Link4" pos="0 -0.15558 0.000035" quat="0.4999982 0.5 -0.5 0.5000018">
+              <joint name="joint4" type="hinge" axis="0 0 1" limited="true" range="-2.967 2.967" damping="0.2" frictionloss="0"/>
+              <inertial pos="0.0059454 0.0000251 0.051809" mass="0.5174" fullinertia="0.0001034 0.0001193 0.0000856 0 -0.0000079 0"/>
+              <geom name="link4_visual" pos="0 0 0" group="1" contype="0" conaffinity="0" rgba="0.5 0.5 1 1" type="mesh" mesh="arm620_Link4"/>
+              <geom name="link4_col" type="capsule" fromto="0 0 0 0 0 0.09" size="0.022" rgba="0 0 0 0"/>
+
+              <body name="Link5" pos="-0.000035 0.0000154 0.064223" quat="0.7071055 0.7071081 0 0">
+                <joint name="joint5" type="hinge" axis="1 0 0" limited="true" range="-1.5708 1.5708" damping="0.2" frictionloss="0"/>
+                <inertial pos="0.0095168 0.061153 0.0000101" mass="0.7233" fullinertia="0.0001359 0.0001006 0.0001594 0.0000391 0 -0.0000001"/>
+                <geom name="link5_visual" pos="0 0 0" group="1" contype="0" conaffinity="0" rgba="0.5 0.5 1 1" type="mesh" mesh="arm620_Link5"/>
+                <geom name="link5_col" type="capsule" fromto="0 0 0 0 0.10 0" size="0.020" rgba="0 0 0 0"/>
+
+                <body name="Link6" pos="-0.0004752 0.095552 0" quat="0.7070701 -0.7071434 0 0">
+                  <joint name="joint6" type="hinge" axis="0 0 1" limited="true" range="-2.967 2.967" damping="0.2" frictionloss="0"/>
+                  <inertial pos="-0.0023023 0.0016027 0.010682" mass="0.0953" fullinertia="0.0000132 0.0000134 0.0000246 -0.0000001 0.0000002 -0.0000002"/>
+                  <geom name="link6_visual" pos="0 0 0" group="1" contype="0" conaffinity="0" rgba="0.5 0.5 1 1" type="mesh" mesh="arm620_Link6"/>
+                  <geom name="link6_col" type="capsule" fromto="0 0 0 0 0.06 0" size="0.017" rgba="0 0 0 0"/>
+
+                  <!-- PGC gripper (referenced from dual_arm_with_pgc.xml) -->
+                  <body name="gripper_base" pos="0 0 0.022" euler="0 0 -1.5708">
+                    <inertial pos="-0.0000039 -0.0002721 0.0435" mass="1" fullinertia="0.000368 0.0003341 0.0002229 -0.0000001 -0.0000001 -0.0000026"/>
+                    <geom name="gripper_base_visual" type="mesh" mesh="pgc_gripper_base_mesh" rgba="0.95 0.95 0.95 1" contype="1" conaffinity="1"/>
+
+                    <body name="hand_narrow_loop_Link" pos="0.0132 0.0265 0.093" quat="0.7071055 0 0 -0.7071081">
+                      <joint name="hand_narrow_loop_joint" type="slide" axis="1 0 0" range="0 0.025" damping="0.2"/>
+                      <inertial pos="0.0030491 -0.0066024 0.0064209" mass="0.014278" fullinertia="0.0000018 0.0000023 0.0000013 -0.0000001 0 0.0000002"/>
+                      <geom name="hand_narrow_loop_visual" type="mesh" mesh="pgc_gripper_finger1_mesh" rgba="0.95 0.95 0.95 1" contype="1" conaffinity="1"/>
+                    </body>
+
+                    <body name="hand_wide_loop_Link" pos="-0.0132 -0.0265 0.093" quat="0.7071055 0 0 0.7071081">
+                      <joint name="hand_wide_loop_joint" type="slide" axis="1 0 0" range="0 0.025" damping="0.2"/>
+                      <inertial pos="0.0030491 -0.0066024 0.0064209" mass="0.014278" fullinertia="0.0000018 0.0000023 0.0000013 -0.0000001 0 0.0000002"/>
+                      <geom name="hand_wide_loop_visual" type="mesh" mesh="pgc_gripper_finger2_mesh" rgba="0.79 0.82 0.93 1" contype="1" conaffinity="1"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude body1="base_link" body2="Link1"/>
+    <exclude body1="Link1" body2="Link2"/>
+    <exclude body1="Link2" body2="Link3"/>
+    <exclude body1="Link3" body2="Link4"/>
+    <exclude body1="Link4" body2="Link5"/>
+    <exclude body1="Link5" body2="Link6"/>
+    <exclude body1="gripper_base" body2="hand_narrow_loop_Link"/>
+    <exclude body1="gripper_base" body2="hand_wide_loop_Link"/>
+    <exclude body1="hand_narrow_loop_Link" body2="hand_wide_loop_Link"/>
+  </contact>
+
+  <actuator>
+    <position name="act_joint1" joint="joint1" kp="120" ctrlrange="-2.967 2.967"/>
+    <position name="act_joint2" joint="joint2" kp="120" ctrlrange="-1.5708 1.5708"/>
+    <position name="act_joint3" joint="joint3" kp="120" ctrlrange="-1.5708 1.5708"/>
+    <position name="act_joint4" joint="joint4" kp="120" ctrlrange="-2.967 2.967"/>
+    <position name="act_joint5" joint="joint5" kp="120" ctrlrange="-1.5708 1.5708"/>
+    <position name="act_joint6" joint="joint6" kp="120" ctrlrange="-2.967 2.967"/>
+    <position name="act_gripper_narrow" joint="hand_narrow_loop_joint" kp="70" ctrlrange="0 0.025"/>
+    <position name="act_gripper_wide" joint="hand_wide_loop_joint" kp="70" ctrlrange="0 0.025"/>
+  </actuator>
+</mujoco>

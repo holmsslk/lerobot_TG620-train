@@ -13,6 +13,7 @@ setup(
         ("share/ament_index/resource_index/packages", [f"resource/{package_name}"]),
         (f"share/{package_name}", ["package.xml"]),
         (os.path.join("share", package_name, "launch"), glob("launch/*.launch.py")),
+        (os.path.join("share", package_name, "models"), glob("models/*.xml")),
     ],
     install_requires=["setuptools", "numpy", "pyzmq"],
     zip_safe=True,
@@ -25,6 +26,7 @@ setup(
         "console_scripts": [
             "tg_arm620_control_bridge = tg_lerobot_bridge.control_bridge_node:main",
             "tg_arm620_sim_control_bridge = tg_lerobot_bridge.sim_control_bridge_node:main",
+            "tg_arm620_mujoco_sim = tg_lerobot_bridge.mujoco_sim_node:main",
             "tg_arm620_gripper_scan = tg_lerobot_bridge.gripper_scan_node:main",
             "tg_camera_zmq_bridge = tg_lerobot_bridge.camera_bridge_node:main",
         ],

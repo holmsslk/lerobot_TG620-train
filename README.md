@@ -24,6 +24,7 @@
 - 已安装并可用 ROS2 Humble
 - 可通过 HTTPS 直接拉取公开仓库（无需配置 SSH）
 - ROS2 构建工具（`colcon`、`rosdep`）及 CAN 相关运行环境
+- MuJoCo（本仓默认路径：`/home/holms/Projects/mujoco/mujoco-3.3.0`）
 
 ## 克隆项目
 
@@ -40,7 +41,9 @@ git submodule update --init --recursive
 git submodule status --recursive
 ```
 
-## 构建 TG_Robot 工作区
+## 一次性构建
+
+### 构建 TG_Robot 工作区
 
 ```bash
 cd TG_Robot
@@ -49,22 +52,7 @@ colcon build --symlink-install
 source install/setup.bash
 ```
 
-## 仿真数据采集全流程（Gazebo Classic + LeRobot 键盘遥操作）
-
-说明：`robot_bringup/robot_gazebo_lerobot.launch.py` 已经同时启动 Gazebo + `tg_arm620_sim_control_bridge` + 双路 `tg_camera_zmq_bridge`，通常不需要再单独启动 `sim_bridges.launch.py`。
-
-### 0. 一次性准备
-
-构建 ROS2 工作区：
-
-```bash
-cd TG_Robot
-source /opt/ros/humble/setup.bash
-colcon build --symlink-install
-source install/setup.bash
-```
-
-准备 LeRobot Python 环境（推荐 Python 3.12）：
+### 准备 LeRobot Python 环境（推荐 Python 3.12）
 
 ```bash
 cd ../lerobot
@@ -72,34 +60,57 @@ uv venv --python 3.12
 uv sync --locked --extra core_scripts --extra pyzmq-dep --extra pynput-dep
 ```
 
-### 1. 启动仿真与桥接（终端 1）
+## 当前实现概览
+
+当前已实现两条可切换仿真链路：
+
+- 推荐：`MuJoCo + tg_arm620_mujoco_sim`
+- 备选：`Gazebo Classic + tg_arm620_sim_control_bridge`
+
+LeRobot 侧接口保持一致：
+
+- 机器人类型：`--robot.type=tg_arm620_follower`
+- 遥操作类型：`--teleop.type=tg_arm620_keyboard`
+- 关节接口：`joint1~joint6`（单位 `rad`）
+- 夹爪接口：`gripper.pos`（`0~100`）
+- 双相机：`front_camera@5555`、`side_front_camera@5556`
+
+默认端口：
+
+- 命令：`6001`
+- 状态：`6002`
+- 前视相机：`5555`
+- 侧前相机：`5556`
+
+## MuJoCo 仿真数据采集全流程（推荐）
+
+说明：本流程用于 imitation 数据采集/回放，保持 LeRobot CLI 不变，仅替换仿真后端。
+
+### 1. 启动 MuJoCo 仿真桥接（终端 1）
 
 ```bash
 cd ~/Projects/lerobot/TG_Robot
 source /opt/ros/humble/setup.bash
 source install/setup.bash
-export GAZEBO_MODEL_DATABASE_URI=""
-ros2 launch robot_bringup robot_gazebo_lerobot.launch.py
+
+export MUJOCO_GL=egl
+ros2 launch robot_bringup robot_mujoco_lerobot.launch.py \
+  mujoco_home:=/home/holms/Projects/mujoco/mujoco-3.3.0 \
+  viewer:=false
 ```
 
-### 2. 启动后健康检查（终端 2）
+备注：
+
+- `viewer:=false` 为无界面模式，最稳定，避免 MuJoCo 快捷键冲突。
+- 如需窗口，改为 `viewer:=true mujoco_gl:=glfw`。
+
+### 2. 端口健康检查（终端 2）
 
 ```bash
-cd ~/Projects/lerobot/TG_Robot
-source /opt/ros/humble/setup.bash
-source install/setup.bash
-
-ros2 control list_controllers --controller-manager /controller_manager
-ros2 topic hz /joint_states
-ros2 topic hz /front_camera/front_camera/image_raw
-ros2 topic hz /side_front_camera/side_front_camera/image_raw
+ss -ltnp | grep -E '5555|5556|6001|6002'
 ```
 
-期望：
-- `joint_state_broadcaster`、`arm_position_controller` 为 `active`
-- `joint_states` 和两路图像 topic 有稳定频率
-
-### 3. 键盘遥操作联调（终端 3，可选）
+### 3. 键盘遥操作联调（终端 3）
 
 ```bash
 cd ~/Projects/lerobot/lerobot
@@ -108,18 +119,25 @@ uv run --no-sync lerobot-teleoperate \
   --robot.remote_ip=127.0.0.1 \
   --robot.cmd_port=6001 \
   --robot.state_port=6002 \
-  --robot.cameras='{front: {type: zmq, server_address: 127.0.0.1, port: 5555, camera_name: front_camera, width: 640, height: 480, fps: 30}, side_front: {type: zmq, server_address: 127.0.0.1, port: 5556, camera_name: side_front_camera, width: 640, height: 480, fps: 30}}' \
+  --robot.cameras='{front: {type: zmq, server_address: 127.0.0.1, port: 5555, camera_name: front_camera, width: 640, height: 480, fps: 30}, side: {type: zmq, server_address: 127.0.0.1, port: 5556, camera_name: side_front_camera, width: 640, height: 480, fps: 30}}' \
   --teleop.type=tg_arm620_keyboard \
+  --teleop.input_backend=stdin \
   --fps=30 \
-  --teleop_time_s=60 \
+  --teleop_time_s=300 \
   --display_data=true
 ```
 
 默认按键：
+
 - 关节正向：`1 2 3 4 5 6`
 - 关节反向：`q w e r t y`
-- 夹爪开合：`p / o`
+- 夹爪开/合：`p / o`
 - 回零：`h`
+
+说明：
+
+- 当前建议显式使用 `--teleop.input_backend=stdin`，在 VM/Wayland 下更稳定。
+- `stdin` 模式需要终端焦点，按键是“脉冲步进”（按一次走一步）。
 
 ### 4. 正式采集（终端 3）
 
@@ -128,19 +146,20 @@ uv run --no-sync lerobot-teleoperate \
 ```bash
 cd ~/Projects/lerobot/lerobot
 RUN_ID=$(date +%Y%m%d_%H%M%S)
-DATA_ROOT=./data/tg_arm620_sim_${RUN_ID}
-REPO_ID=local/tg_arm620_sim_empty_scene_${RUN_ID}
+DATA_ROOT=./data/tg_arm620_mujoco_${RUN_ID}
+REPO_ID=local/tg_arm620_mujoco_${RUN_ID}
 
 uv run --no-sync lerobot-record \
   --robot.type=tg_arm620_follower \
   --robot.remote_ip=127.0.0.1 \
   --robot.cmd_port=6001 \
   --robot.state_port=6002 \
-  --robot.cameras='{front: {type: zmq, server_address: 127.0.0.1, port: 5555, camera_name: front_camera, width: 640, height: 480, fps: 30}, side_front: {type: zmq, server_address: 127.0.0.1, port: 5556, camera_name: side_front_camera, width: 640, height: 480, fps: 30}}' \
+  --robot.cameras='{front: {type: zmq, server_address: 127.0.0.1, port: 5555, camera_name: front_camera, width: 640, height: 480, fps: 30}, side: {type: zmq, server_address: 127.0.0.1, port: 5556, camera_name: side_front_camera, width: 640, height: 480, fps: 30}}' \
   --teleop.type=tg_arm620_keyboard \
+  --teleop.input_backend=stdin \
   --dataset.repo_id=${REPO_ID} \
   --dataset.root=${DATA_ROOT} \
-  --dataset.single_task="Teleop arm620 in empty Gazebo scene" \
+  --dataset.single_task="Teleop arm620 in MuJoCo scene" \
   --dataset.fps=30 \
   --dataset.num_episodes=5 \
   --dataset.episode_time_s=30 \
@@ -154,8 +173,6 @@ uv run --no-sync lerobot-record \
 
 ### 5. 回放验证（终端 3）
 
-使用上一步相同的 `REPO_ID` 和 `DATA_ROOT`：
-
 ```bash
 cd ~/Projects/lerobot/lerobot
 uv run --no-sync lerobot-replay \
@@ -168,17 +185,50 @@ uv run --no-sync lerobot-replay \
   --dataset.episode=0
 ```
 
-### 6. 常见问题排查
+## Gazebo Classic 链路（备选）
 
-- Gazebo 报 `Address already in use`：有旧的 Gazebo 进程未退出，先清理后重启。
-  - 可用：`pkill -f gzserver; pkill -f gzclient; pkill -f 'gazebo --verbose'`
-- `FileExistsError: [Errno 17] File exists: 'data'`：`--dataset.root` 不能指向已存在目录，请改为新目录（如时间戳目录）。
-- 控制器 `active` 但不动：
-  - 确认只启动了一套桥接（不要重复启动 `sim_bridges.launch.py`）。
-  - 查看 `ros2 topic echo /arm_position_controller/commands`，按键时应看到目标角度变化。
-- 键盘无响应：
-  - 确认命令窗口拥有焦点。
-  - Linux 需有图形会话（`DISPLAY` 有效），且已安装 `pynput` extra。
+说明：当你需要对照 ROS2 控制器链路时，可使用 Gazebo 方案。
+
+### 1. 启动 Gazebo 与桥接（终端 1）
+
+```bash
+cd ~/Projects/lerobot/TG_Robot
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+export GAZEBO_MODEL_DATABASE_URI=""
+ros2 launch robot_bringup robot_gazebo_lerobot.launch.py
+```
+
+### 2. 控制器与图像检查（终端 2）
+
+```bash
+cd ~/Projects/lerobot/TG_Robot
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+ros2 control list_controllers --controller-manager /controller_manager
+ros2 topic hz /joint_states
+ros2 topic hz /front_camera/front_camera/image_raw
+ros2 topic hz /side_front_camera/side_front_camera/image_raw
+```
+
+### 3. LeRobot 侧命令
+
+遥操作、采集、回放命令与 MuJoCo 流程相同。
+
+## 常见问题排查
+
+- `Address already in use`：有旧仿真进程未退出。
+  - Gazebo: `pkill -f gzserver; pkill -f gzclient; pkill -f 'gazebo --verbose'`
+  - MuJoCo: `pkill -f tg_arm620_mujoco_sim`
+- `FileExistsError: ... 'data'`：`--dataset.root` 需使用新目录。
+- 键盘无响应（尤其 VM/Wayland）：
+  - 使用 `--teleop.input_backend=stdin`
+  - 确保运行 `lerobot-teleoperate` 的终端窗口有焦点
+- 开了 MuJoCo viewer 后按键异常：
+  - viewer 与 teleop 可能抢按键，建议 `viewer:=false`
+- 机械臂在某些接触姿态不操作仍轻微抖动：
+  - 当前参数下可能由接触刚度 + 高增益控制共同导致（已知现象，后续可做参数整定）
 
 ## 真机快速启动（arm620）
 
